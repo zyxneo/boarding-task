@@ -1,0 +1,36 @@
+
+.header__container {
+  display: flex;
+}
+
+.nav {
+  &__link--site {
+    color: var(--white);
+
+    &:hover {
+      color: var(--white);
+    }
+
+    &.is-active {
+      background: var(--grayLighter);
+      color: var(--black);
+
+      &:hover {
+        color: var(--black);
+        text-decoration: none;
+        cursor: default;
+      }
+    }
+  }
+}
+
+
+.branding__link {
+  font-weight: 900;
+  color: var(--colorPrimary);
+
+  &:hover {
+    color: var(--white);
+    text-decoration: none;
+  }
+}

@@ -1,4 +1,5 @@
 import React from "react";
+import Ring from "../segments/ring";
 
 export default class HomePage extends React.Component {
   render() {
@@ -6,9 +7,9 @@ export default class HomePage extends React.Component {
       return (
         <main class="main">
           <div class="container">
-            <h1>HomePage</h1>
+            <h1>Darstellung eines Bohrabschnitts</h1>
 
-            <h3>Under development</h3>
+            <Ring/>
 
           </div>
         </main>

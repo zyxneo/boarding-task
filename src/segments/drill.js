@@ -10,9 +10,7 @@ export default function Drill (props) {
   let stroke = props.stroke || "none";
 
   return (
-    <g className="drill">
-      <circle cx={cX} cy={cY} r={radius} fill={fill} stroke={stroke}/>
-    </g>
+    <circle cx={cX} cy={cY} r={radius} fill={fill} stroke={stroke}/>
   );
 
 }

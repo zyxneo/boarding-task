@@ -1,6 +1,15 @@
 
-.ring__svg {
+.ring {
   display: flex;
-  height: 400px;
   margin: 0 auto;
+  justify-content: center;
+}
+
+.ring__svg {
+  flex: 0 1 400px;
+  height: 400px;
+}
+.slider__svg {
+  flex: 0 1 60px;
+  height: 400px;
 }

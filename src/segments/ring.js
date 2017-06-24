@@ -4,6 +4,7 @@ import Colors from "../colors";
 import style from "./segments.css";
 import LoadDrillData from "./loadDrillData";
 import Drill from "./drill";
+import Slider from "../ui/Slider";
 
 export default class Ring extends React.Component {
 
@@ -15,6 +16,8 @@ export default class Ring extends React.Component {
       },
       "drills": [
       ],
+      "minLevel": 0,
+      "maxLevel": 0,
       "minDepthToShow": 0,
       "maxDepthToShow": 4
     };
@@ -22,15 +25,24 @@ export default class Ring extends React.Component {
 
   updateData (data) {
     this.setState(data);
+
+    let minLevel = Math.min.apply(Math,this.state.drills[0].data.map(function(o){return o.depth;}));
+    let maxLevel = Math.max.apply(Math,this.state.drills[0].data.map(function(o){return o.depth;}));
+    this.setState({
+      minLevel,
+      maxLevel
+    });
   }
 
   componentDidMount() {
     LoadDrillData("http://localhost:8080/api/test.json", this.updateData.bind(this));
-    console.log(this.state.maxDepthToShow);
   }
 
-  depthsToShow (value) {
-    return value >= 5;
+  onSlide (value) {
+    this.setState({
+      "minDepthToShow": value,
+      "maxDepthToShow": value
+    });
   }
 
   render() {
@@ -45,6 +57,9 @@ export default class Ring extends React.Component {
     let cY = radius;
     let minDepth = this.state.minDepthToShow;
     let maxDepth = this.state.maxDepthToShow;
+
+    let minLevel = this.state.minLevel;
+    let maxLevel = this.state.maxLevel;
 
     return (
       <div class="ring">
@@ -67,6 +82,7 @@ export default class Ring extends React.Component {
           };
 
         </svg>
+        <Slider onSlide={this.onSlide.bind(this)} min={minLevel} max={maxLevel}/>
       </div>
     )
   }
